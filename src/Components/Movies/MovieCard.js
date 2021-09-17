@@ -31,14 +31,14 @@ const MovieCard = ({ movieData }) => {
                             {movieData.media_type}
                         </div>
                         <span className="text-gray-500 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-800">
-                            <svg className="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" strokeLinecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                 <circle cx="12" cy="12" r="3"></circle>
                             </svg>
                             {movieData.popularity}
                         </span>
                         <span className="text-gray-500 inline-flex items-center leading-none text-sm">
-                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-indigo-400" viewBox="0 0 24 24">
+                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" stroke-width="2" className="w-4 h-4 text-indigo-400" viewBox="0 0 24 24">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                             </svg> &nbsp;
                             {movieData.vote_average}
