@@ -12,7 +12,6 @@ const Movies = () => {
     const fetchAllMovies = async () => {
         try {
             const response = await APIRequestHelper('get', '');
-            console.log('response: ', response);
             dispatch(addMovies(response.data.results));
         } catch (error) {
             console.log('Error while API data fetching.');
