@@ -1,8 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { MOVIE_DETAILS } from '../../helpers/RoutesURL';
+import { setSelectedMovie } from '../../store/reducer/movieReducer';
 
 const MovieCard = ({ movieData }) => {
+
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     return (
-        <div class="p-4 md:w-1/3">
+        <div class="p-4 md:w-1/3 cursor-pointer" onClick={() => {
+            dispatch(setSelectedMovie(movieData));
+            history.push(MOVIE_DETAILS);
+        }}>
             <div class="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
                 <img class="lg:h-48 md:h-36 w-full object-cover object-center" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${movieData.poster_path}`} alt="blog" />
                 <div class="p-6">
@@ -27,9 +38,9 @@ const MovieCard = ({ movieData }) => {
                             {movieData.popularity}
                         </span>
                         <span class="text-gray-500 inline-flex items-center leading-none text-sm">
-                            <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                            </svg>
+                            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-400" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg> &nbsp;
                             {movieData.vote_average}
                         </span>
                     </div>
