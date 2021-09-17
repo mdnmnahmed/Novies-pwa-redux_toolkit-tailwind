@@ -1,16 +1,29 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { INDEX } from '../../helpers/RoutesURL';
+import { addToFavorite } from '../../store/reducer/movieReducer';
 
 const MovieDetails = () => {
 
-    const movieData = useSelector(state => state.moviesReducer.selectedMovie);
     const history = useHistory();
+    const dispatch = useDispatch();
+    const movieData = useSelector(state => state.moviesReducer.selectedMovie);
+    const favoriteMovies = useSelector(state => state.moviesReducer.favoriteMovies);
+    const [isFavoriteMovie, setIsFavoriteMovie] = useState(false);
 
     useEffect(() => {
         !movieData && history.push(INDEX);
     }, []);
+
+    useEffect(() => {
+        favoriteMovies && favoriteMovies.map(movie => {
+            if (movie.id == movieData.id) {
+                setIsFavoriteMovie(true);
+            }
+        })
+    }, [favoriteMovies]);
+
 
     return (
         <section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
@@ -112,6 +125,15 @@ const MovieDetails = () => {
                                     </span>
                                 </span>
                             </span>
+                        </div>
+                        <div className="mt-5 ml-16">
+                            <button class="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                                onClick={() => !isFavoriteMovie ? dispatch(addToFavorite(movieData)) : undefined}
+                            >
+                                <svg fill={isFavoriteMovie ? "red" : "currentColor"} stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
