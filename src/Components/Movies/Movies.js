@@ -24,9 +24,9 @@ const Movies = () => {
     }, []);
 
     return (
-        <section class="text-gray-400 bg-gray-900 body-font">
-            <div class="container px-5 mx-auto">
-                <div class="flex flex-wrap -m-4">
+        <section className="text-gray-400 bg-gray-900 body-font">
+            <div className="container px-5 mx-auto">
+                <div className="flex flex-wrap -m-4">
                     {
                         allMovies != null && allMovies.map(movieData => (
                             movieData && (
