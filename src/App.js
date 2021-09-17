@@ -4,6 +4,7 @@ import Header from './Components/Header/Header';
 import RouterComponent from './RouterComponent';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import './styles/styles.css';
 
 const App = () => {
     return (

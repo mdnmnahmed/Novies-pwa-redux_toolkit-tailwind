@@ -26,7 +26,6 @@ const APIRequestHelper = async (method = 'get', endpoint, data = null) => {
             url: BASE_URL + endpoint,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': accessToken
             },
             data: data
         };
@@ -38,7 +37,6 @@ const APIRequestHelper = async (method = 'get', endpoint, data = null) => {
             url: BASE_URL + endpoint,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': accessToken
             },
         };
     }
