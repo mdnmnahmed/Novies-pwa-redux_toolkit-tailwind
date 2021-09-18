@@ -1,25 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import APIRequestHelper from '../../helpers/APIRequestHelper';
-import { addMovies } from '../../store/reducer/movieReducer';
+import { addMovies, fetchAllMovies } from '../../store/reducer/movieReducer';
 import MovieCard from './MovieCard';
 
 const Movies = () => {
-
     const dispatch = useDispatch();
     const { allMovies } = useSelector(state => state.moviesReducer);
 
-    const fetchAllMovies = async () => {
-        try {
-            const response = await APIRequestHelper('get', '');
-            dispatch(addMovies(response.data.results));
-        } catch (error) {
-            console.log('Error while API data fetching.');
-        }
-    }
-
     useEffect(() => {
-        fetchAllMovies();
+        !allMovies && dispatch(fetchAllMovies());
     }, []);
 
     return (
@@ -27,7 +17,7 @@ const Movies = () => {
             <div className="container px-5 mx-auto">
                 <div className="flex flex-wrap -m-4">
                     {
-                        allMovies != null && allMovies.map(movieData => (
+                        allMovies && allMovies.map(movieData => (
                             movieData && (
                                 <MovieCard
                                     key={movieData.id}
