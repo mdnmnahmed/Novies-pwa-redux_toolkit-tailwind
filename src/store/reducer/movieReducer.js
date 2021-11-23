@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import APIRequestHelper from '../../helpers/APIRequestHelper';
+import MovieModel from '../../models/MovieModel';
 
 const initialState = {
     allMovies: '',
@@ -34,7 +35,8 @@ const movieSlice = createSlice({
             // console.log('Fetching Movies')
         },
         [fetchAllMovies.fulfilled]: (state, { payload }) => {
-            state.allMovies = payload
+            const allMovies = payload.map(movie => new MovieModel(movie));
+            state.allMovies = allMovies;
         },
         [fetchAllMovies.rejected]: () => {
             // console.log('Error Occured in Fetching Movies')
