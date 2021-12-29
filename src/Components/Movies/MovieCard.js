@@ -18,7 +18,7 @@ const MovieCard = ({ movieData }) => {
                 <img className="lg:h-48 md:h-36 w-full object-cover object-center" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${movieData.poster_path}`} alt="blog" />
                 <div className="p-6">
                     <h2 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
-                        {movieData.release_date || movieData.first_air_date}
+                        {movieData.getReleaseDate()}
                     </h2>
                     <h1 className="title-font text-lg font-medium text-white mb-3">
                         {movieData.original_title || movieData.original_name}
